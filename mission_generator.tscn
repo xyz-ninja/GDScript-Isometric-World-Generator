@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://rpg/scripts/generator.gd" type="Script" id=1]
+[ext_resource path="res://rpg/scripts/level_renderer.gd" type="Script" id=2]
+[ext_resource path="res://rpg/scripts/draw_engine.gd" type="Script" id=3]
+[ext_resource path="res://gui/context_menu.tscn" type="PackedScene" id=4]
+
+[node name="mission_generator" type="Node2D" groups=[
+"generator",
+]]
+
+script/script = ExtResource( 1 )
+
+[node name="renderer" type="Node2D" parent="." groups=[
+"renderer",
+]]
+
+script/script = ExtResource( 2 )
+
+[node name="units" type="Node2D" parent="renderer"]
+
+[node name="cars" type="Node2D" parent="renderer"]
+
+[node name="tiles" type="Node2D" parent="renderer"]
+
+[node name="draw_engine" type="Node2D" parent="renderer"]
+
+z/z = 1000
+script/script = ExtResource( 3 )
+
+[node name="context_menu" parent="renderer" instance=ExtResource( 4 )]
+
+transform/scale = Vector2( 0.6, 0.6 )
+z/z = 1000
+
+[node name="cam" type="Camera2D" parent="."]
+
+offset = Vector2( 0, -25 )
+anchor_mode = 0
+rotating = false
+current = true
+zoom = Vector2( 0.32, 0.32 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 50.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+

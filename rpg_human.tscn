@@ -1,0 +1,374 @@
+[gd_scene load_steps=18 format=1]
+
+[ext_resource path="res://rpg/scripts/iso_human.gd" type="Script" id=1]
+[ext_resource path="res://scripts/button.gd" type="Script" id=2]
+[ext_resource path="res://sprites/gui.png" type="Texture" id=3]
+[ext_resource path="res://gui/rooms/progressbars/progressbar_health.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui/rooms/progressbars/progressbar_energy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sprites/weapons.png" type="Texture" id=6]
+[ext_resource path="res://rpg/sprites/humans.png" type="Texture" id=7]
+[ext_resource path="res://units/human.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/icons.png" type="Texture" id=9]
+[ext_resource path="res://fonts/haxrcorp_4089_cyrillic_altgr.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://fonts/SfAtarianSystemBold-w3rz.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://shaders/intro_logo.tres" type="CanvasItemMaterial" id=12]
+[ext_resource path="res://scripts/proc_anim.gd" type="Script" id=13]
+[ext_resource path="res://fonts/CellblockNbp-5P0z.ttf" type="DynamicFontData" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 14
+font/use_mipmaps = true
+font/use_filter = false
+font/font = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 28
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=3]
+
+font/size = 25
+font/use_mipmaps = true
+font/use_filter = false
+font/font = ExtResource( 14 )
+
+[node name="rpg_human" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+script/script = ExtResource( 1 )
+
+[node name="info" type="Node2D" parent="."]
+
+transform/pos = Vector2( -14, 29 )
+
+[node name="bg_button" type="Node2D" parent="info"]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( -21, -39 )
+transform/scale = Vector2( 0.8, 0.8 )
+script/script = ExtResource( 2 )
+
+[node name="green_circle" type="Sprite" parent="info/bg_button"]
+
+transform/pos = Vector2( 2.5, 37.5 )
+transform/scale = Vector2( 0.846056, 0.654875 )
+texture = ExtResource( 3 )
+centered = false
+modulate = Color( 0.0836539, 0.507813, 0.0357056, 1 )
+region = true
+region_rect = Rect2( 465, 126, 55, 30 )
+
+[node name="bg" type="Sprite" parent="info/bg_button"]
+
+visibility/opacity = 0.0
+transform/pos = Vector2( 0, -2.38419e-07 )
+texture = ExtResource( 3 )
+centered = false
+modulate = Color( 0.291595, 0.454987, 0.574219, 1 )
+region = true
+region_rect = Rect2( 456, 76, 50, 50 )
+
+[node name="bottom" type="Node2D" parent="info"]
+
+editor/display_folded = true
+visibility/opacity = 0.7
+transform/pos = Vector2( -1.30537, -2.88649 )
+transform/scale = Vector2( 0.753332, 0.753332 )
+
+[node name="progressbar_health" parent="info/bottom" instance=ExtResource( 4 )]
+
+visibility/visible = false
+visibility/opacity = 0.8
+transform/pos = Vector2( -34.9115, -2.34516 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.4, 0.5 )
+
+[node name="progressbar_energy" parent="info/bottom" instance=ExtResource( 5 )]
+
+visibility/visible = false
+visibility/opacity = 0.8
+transform/pos = Vector2( -41.5486, -3.67256 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.35, 0.4 )
+
+[node name="main" type="Node2D" parent="info"]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( 1.32149, 14.6637 )
+
+[node name="main_pivot" type="Node2D" parent="info/main"]
+
+transform/pos = Vector2( 0, -30 )
+z/z = 200
+
+[node name="bg1" type="Sprite" parent="info/main"]
+
+transform/pos = Vector2( 24.3396, -28.314 )
+transform/rot = 22.0
+transform/scale = Vector2( 0.265, 0.163623 )
+texture = ExtResource( 3 )
+modulate = Color( 0.949219, 0.478317, 0.930824, 1 )
+region = true
+region_rect = Rect2( 152, 152, 76, 76 )
+
+[node name="bg" type="Sprite" parent="info/main"]
+
+transform/pos = Vector2( 25.3396, -31.3141 )
+transform/rot = 22.0
+transform/scale = Vector2( 0.265, 0.163623 )
+texture = ExtResource( 3 )
+modulate = Color( 0.118256, 0.422764, 0.605469, 1 )
+region = true
+region_rect = Rect2( 152, 152, 76, 76 )
+
+[node name="weapon" type="Sprite" parent="info/main"]
+
+transform/pos = Vector2( 34.9764, -38.813 )
+transform/rot = 22.0
+transform/scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 6 )
+region = true
+region_rect = Rect2( 0, 0, 130, 45 )
+
+[node name="character" type="Sprite" parent="info/main"]
+
+transform/pos = Vector2( -1.59941, -33.567 )
+transform/scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 7 )
+region = true
+region_rect = Rect2( 140, 0, 35, 35 )
+
+[node name="body" parent="info" instance=ExtResource( 8 )]
+
+transform/pos = Vector2( -0.901806, -45.2822 )
+transform/scale = Vector2( 0.404227, 0.404227 )
+z/z = 0
+
+[node name="progressbars" type="Node2D" parent="."]
+
+editor/display_folded = true
+visibility/opacity = 0.8
+transform/pos = Vector2( -27.3666, -26.9643 )
+transform/scale = Vector2( 0.397288, 0.397288 )
+z/z = 25
+
+[node name="progressbar_energy" parent="progressbars" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 19.353, 1.73354 )
+transform/scale = Vector2( 0.582224, 0.582224 )
+
+[node name="progressbar_health" parent="progressbars" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 17.23, -5.89366 )
+transform/scale = Vector2( 0.65, 0.65 )
+
+[node name="addit_gui" type="Node2D" parent="."]
+
+transform/pos = Vector2( 2.42735, -30.6984 )
+transform/scale = Vector2( 0.90455, 0.90455 )
+z/z = 25
+
+[node name="shelter_meter" type="Node2D" parent="addit_gui"]
+
+editor/display_folded = true
+visibility/visible = false
+visibility/opacity = 0.8
+transform/pos = Vector2( -38.7533, 12.2792 )
+transform/scale = Vector2( 0.386872, 0.386872 )
+
+[node name="icon" type="Sprite" parent="addit_gui/shelter_meter"]
+
+transform/pos = Vector2( 0, 0.354876 )
+texture = ExtResource( 9 )
+region = true
+region_rect = Rect2( 0, 0, 30, 30 )
+
+[node name="mood_icon" type="Node2D" parent="addit_gui"]
+
+editor/display_folded = true
+transform/pos = Vector2( -27.3108, 4.74231 )
+transform/scale = Vector2( 0.383343, 0.383343 )
+
+[node name="icon" type="Sprite" parent="addit_gui/mood_icon"]
+
+texture = ExtResource( 9 )
+region = true
+region_rect = Rect2( 150, 30, 30, 30 )
+
+[node name="dev_debug" type="Node2D" parent="addit_gui"]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( -21.0049, 30.9546 )
+z/z = 4096
+
+[node name="d_text" type="Label" parent="addit_gui/dev_debug"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 21.0
+margin/top = -21.0
+margin/right = 112.0
+margin/bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = -4
+custom_constants/shadow_as_outline = 1
+text = "unit
+debug"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="selected_unit_marker" type="Node2D" parent="addit_gui"]
+
+editor/display_folded = true
+transform/pos = Vector2( -11.0552, -9.9497 )
+z/z = 50
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="selected_unit_bg" type="Node2D" parent="addit_gui/selected_unit_marker"]
+
+transform/pos = Vector2( -2.52512, -5.40336 )
+transform/scale = Vector2( 1.43627, 1.16372 )
+
+[node name="text" type="Label" parent="addit_gui/selected_unit_marker/selected_unit_bg"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -22.0
+margin/top = 34.0
+margin/right = 18.0
+margin/bottom = 69.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = ">"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="text1" type="Label" parent="addit_gui/selected_unit_marker/selected_unit_bg"]
+
+rect/rotation = 180.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 15.0
+margin/top = 47.0
+margin/right = 55.0
+margin/bottom = 81.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = ">"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="text" type="Label" parent="addit_gui/selected_unit_marker"]
+
+material/material = ExtResource( 12 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -32.0
+margin/top = 35.0
+margin/right = 8.0
+margin/bottom = 69.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.125, 1, 0.446289, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = ">"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="text1" type="Label" parent="addit_gui/selected_unit_marker"]
+
+material/material = ExtResource( 12 )
+rect/rotation = 180.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 17.0
+margin/top = 48.0
+margin/right = 57.0
+margin/bottom = 82.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.125, 1, 0.446289, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = ">"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="fight_mode_unit_has_ap_marker" type="Node2D" parent="addit_gui"]
+
+visibility/visible = false
+
+[node name="icon" type="Node2D" parent="addit_gui/fight_mode_unit_has_ap_marker"]
+
+transform/pos = Vector2( 2.37465, -3.56168 )
+transform/rot = 269.822
+transform/scale = Vector2( 1, 1.29204 )
+script/script = ExtResource( 13 )
+connected_node_path = NodePath("..")
+is_sine_enable = true
+sine_range = Vector2( 1, 1 )
+sine_angle_increase_time = 0.1
+
+[node name="Label" type="Label" parent="addit_gui/fight_mode_unit_has_ap_marker/icon"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 31.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 1, 0.226563, 1 )
+custom_colors/font_color_shadow = Color( 0, 1, 0.226563, 1 )
+text = "("
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

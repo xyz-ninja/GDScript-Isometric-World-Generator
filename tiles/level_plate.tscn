@@ -1,0 +1,469 @@
+[gd_scene load_steps=21 format=1]
+
+[ext_resource path="res://rpg/scripts/isometric_tile.gd" type="Script" id=1]
+[ext_resource path="res://rpg/tiles/tile_parallelogram_collider.tscn" type="PackedScene" id=2]
+[ext_resource path="res://rpg/sprites/plates.png" type="Texture" id=3]
+[ext_resource path="res://rpg/scripts/isometric_tile_furniture.gd" type="Script" id=4]
+[ext_resource path="res://rpg/sprites/furniture.png" type="Texture" id=5]
+[ext_resource path="res://sprites/furniture_storage.png" type="Texture" id=6]
+[ext_resource path="res://sprites/gui.png" type="Texture" id=7]
+[ext_resource path="res://fonts/pixel4.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://sprites/microicons.png" type="Texture" id=9]
+[ext_resource path="res://gui/rooms/progressbars/progressbar_shaded.tscn" type="PackedScene" id=10]
+[ext_resource path="res://fonts/vintage.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://fonts/retro_lines.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://gui/tile_has_items_icon.tscn" type="PackedScene" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 15
+font/use_mipmaps = true
+font/use_filter = false
+font/font = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 21
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+
+font/size = 20
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+
+font/size = 16
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=5]
+
+font/size = 21
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=6]
+
+font/size = 20
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=7]
+
+font/size = 16
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 12 )
+
+[node name="level_plate" type="Node2D"]
+
+script/script = ExtResource( 1 )
+is_floor = true
+
+[node name="par_collider" parent="." instance=ExtResource( 2 )]
+
+[node name="bg" type="Sprite" parent="."]
+
+texture = ExtResource( 3 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 80, 80 )
+
+[node name="all_blood" type="Node2D" parent="."]
+
+[node name="furniture" type="Node2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+z/relative = false
+script/script = ExtResource( 4 )
+
+[node name="left" type="Sprite" parent="furniture"]
+
+visibility/visible = false
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 160, 80, 80, 80 )
+
+[node name="back" type="Sprite" parent="furniture"]
+
+visibility/visible = false
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 80, 80, 80, 80 )
+
+[node name="storage" type="Node2D" parent="furniture"]
+
+[node name="texture" type="Sprite" parent="furniture/storage"]
+
+texture = ExtResource( 6 )
+centered = false
+region = true
+region_rect = Rect2( 80, 0, 80, 80 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="s_info" type="Node2D" parent="furniture/storage"]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( 10.9818, 26.0609 )
+transform/scale = Vector2( 0.520674, 0.520674 )
+z/z = 30
+
+[node name="info" type="Node2D" parent="furniture/storage/s_info"]
+
+transform/pos = Vector2( 15.9357, -3.86713 )
+transform/scale = Vector2( 0.827191, 0.827191 )
+
+[node name="bg" type="Sprite" parent="furniture/storage/s_info/info"]
+
+visibility/opacity = 0.92
+transform/pos = Vector2( 23.4903, -28.2224 )
+transform/scale = Vector2( 1.03942, 0.484234 )
+texture = ExtResource( 7 )
+centered = false
+modulate = Color( 0.00540161, 0.0077212, 0.0117188, 1 )
+region = true
+region_rect = Rect2( 152, 228, 76, 76 )
+
+[node name="header" type="Label" parent="furniture/storage/s_info/info"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 15.0
+margin/top = -39.0
+margin/right = 108.0
+margin/bottom = -7.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.920654, 1, 0.21875, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 1
+text = "склад"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="text_block" type="Node2D" parent="furniture/storage/s_info/info"]
+
+transform/pos = Vector2( 23.2364, -8.22558 )
+transform/scale = Vector2( 0.633708, 0.633708 )
+
+[node name="text" type="Label" parent="furniture/storage/s_info/info/text_block"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 2.0
+margin/top = -22.0
+margin/right = 124.0
+margin/bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.203949, 0.575861, 0.636719, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = -1
+custom_constants/shadow_offset_y = 0
+custom_constants/shadow_as_outline = 1
+text = "ПОЛОН
+0/10"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="attached_info" type="Node2D" parent="furniture/storage/s_info"]
+
+editor/display_folded = true
+visibility/visible = false
+
+[node name="bg" type="Sprite" parent="furniture/storage/s_info/attached_info"]
+
+visibility/opacity = 0.88
+transform/pos = Vector2( 33.5427, -22.5884 )
+transform/scale = Vector2( 1.25058, 0.290555 )
+texture = ExtResource( 7 )
+centered = false
+modulate = Color( 0.0708008, 0.0863991, 0.113281, 1 )
+region = true
+region_rect = Rect2( 152, 228, 76, 76 )
+
+[node name="text_block" type="Node2D" parent="furniture/storage/s_info/attached_info"]
+
+transform/pos = Vector2( 34.6736, -12.2648 )
+transform/scale = Vector2( 0.484148, 0.484148 )
+
+[node name="text" type="Label" parent="furniture/storage/s_info/attached_info/text_block"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 11.0
+margin/top = -30.0
+margin/right = 187.0
+margin/bottom = 35.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = -1
+custom_constants/shadow_offset_y = 0
+custom_constants/shadow_as_outline = 1
+text = "Склад Тайла"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="icon" type="Node2D" parent="furniture/storage/s_info"]
+
+editor/display_folded = true
+transform/pos = Vector2( 13.9831, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="icon_bg" type="Sprite" parent="furniture/storage/s_info/icon"]
+
+visibility/opacity = 0.9
+transform/pos = Vector2( -6.53015, -24.8351 )
+transform/scale = Vector2( 0.338252, 0.338252 )
+texture = ExtResource( 7 )
+centered = false
+modulate = Color( 0, 0, 0, 1 )
+region = true
+region_rect = Rect2( 152, 76, 76, 76 )
+
+[node name="tex" type="Sprite" parent="furniture/storage/s_info/icon"]
+
+transform/pos = Vector2( 5.9268, -12.7775 )
+texture = ExtResource( 9 )
+region = true
+region_rect = Rect2( 0, 75, 25, 25 )
+
+[node name="plant_gui_info" type="Node2D" parent="furniture/storage"]
+
+editor/display_folded = true
+visibility/visible = false
+z/z = 30
+
+[node name="ready" type="Node2D" parent="furniture/storage/plant_gui_info"]
+
+editor/display_folded = true
+transform/pos = Vector2( 17.215, 14.4115 )
+transform/scale = Vector2( 0.40902, 0.40902 )
+z/z = 25
+
+[node name="bg" type="Sprite" parent="furniture/storage/plant_gui_info/ready"]
+
+visibility/opacity = 0.92
+transform/pos = Vector2( -3.01529, -1.95115 )
+transform/scale = Vector2( 1.39161, 0.426334 )
+texture = ExtResource( 7 )
+centered = false
+modulate = Color( 0, 0, 0, 1 )
+region = true
+region_rect = Rect2( 152, 228, 76, 76 )
+
+[node name="ready_label" type="Label" parent="furniture/storage/plant_gui_info/ready"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -4.0
+margin/top = -25.0
+margin/right = 104.0
+margin/bottom = 19.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.434974, 0.96875, 0.374634, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = -3
+custom_constants/shadow_as_outline = 1
+text = "готово"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="items_count" type="Label" parent="furniture/storage/plant_gui_info/ready"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -4.0
+margin/top = 8.0
+margin/right = 103.0
+margin/bottom = 28.0
+custom_fonts/font = SubResource( 4 )
+text = "12/12"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="progress" type="Node2D" parent="furniture/storage/plant_gui_info"]
+
+[node name="progressbar_shaded" parent="furniture/storage/plant_gui_info/progress" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 18.8438, 15.5718 )
+transform/scale = Vector2( 0.495158, 0.495158 )
+
+[node name="right" type="Sprite" parent="furniture"]
+
+visibility/visible = false
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 240, 80, 80, 80 )
+
+[node name="front" type="Sprite" parent="furniture"]
+
+visibility/visible = false
+transform/pos = Vector2( 0, -1 )
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 0, 80, 80, 80 )
+
+[node name="custom_front" type="Sprite" parent="furniture"]
+
+visibility/visible = false
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 80, 80, 80, 80 )
+
+[node name="custom_back" type="Sprite" parent="furniture"]
+
+visibility/visible = false
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 80, 80, 80, 80 )
+
+[node name="addit_gui_info" type="Node2D" parent="furniture"]
+
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="alert_no_storage" type="Node2D" parent="furniture/addit_gui_info"]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( 9.21931, 11.8513 )
+transform/scale = Vector2( 0.301663, 0.301663 )
+z/z = 30
+
+[node name="bg" type="Sprite" parent="furniture/addit_gui_info/alert_no_storage"]
+
+visibility/opacity = 0.85
+transform/scale = Vector2( 2.73977, 0.381402 )
+texture = ExtResource( 7 )
+centered = false
+modulate = Color( 0, 0, 0, 1 )
+region = true
+region_rect = Rect2( 152, 228, 76, 76 )
+
+[node name="text" type="Label" parent="furniture/addit_gui_info/alert_no_storage"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1.0
+margin/top = 2.0
+margin/right = 207.0
+margin/bottom = 29.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 0.410156, 0.589874, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/line_spacing = -9
+custom_constants/shadow_offset_y = 2
+text = "Нет склада!"
+align = 1
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="text_data" type="Node2D" parent="furniture"]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( 7.18053, 8.34908 )
+transform/scale = Vector2( 0.709721, 0.709721 )
+
+[node name="bar_label" type="Label" parent="furniture/text_data"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 6.0
+margin/top = 25.0
+margin/right = 72.0
+margin/bottom = 68.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.105469, 1, 0.937103, 1 )
+custom_colors/font_color_shadow = Color( 0.863281, 0.212448, 0.212448, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/line_spacing = -8
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 0
+text = "Бар"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="sub" type="Label" parent="furniture/text_data/bar_label"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 13.0
+margin/top = 22.0
+margin/right = 53.0
+margin/bottom = 45.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color_shadow = Color( 0.40955, 0.206543, 0.5625, 1 )
+custom_constants/shadow_offset_x = 0
+text = "24/7"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tile_has_items_icon" parent="." instance=ExtResource( 13 )]
+
+

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://rpg/scripts/iso_car.gd" type="Script" id=1]
+[ext_resource path="res://sprites/cars.png" type="Texture" id=2]
+
+
+
+
+
+[node name="car" type="Node2D"]
+
+transform/scale = Vector2( 0.8, 0.8 )
+z/z = 15
+script/script = ExtResource( 1 )
+
+[node name="main" type="Node2D" parent="."]
+
+transform/pos = Vector2( 23.75, 44.1667 )
+
+[node name="img" type="Sprite" parent="main"]
+
+texture = ExtResource( 2 )
+region = true
+region_rect = Rect2( 0, 0, 160, 80 )
+
+

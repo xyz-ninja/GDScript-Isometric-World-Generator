@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20, 17 )
+
+[node name="back" type="CollisionShape2D"]
+
+transform/pos = Vector2( 26, 32 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = -1
+
+

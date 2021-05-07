@@ -1,0 +1,331 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://rpg/sprites/plates_icons.png" type="Texture" id=1]
+[ext_resource path="res://shaders/white_sine_anim_SHADER.tres" type="Shader" id=2]
+[ext_resource path="res://fonts/mainlogo2.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/mainlogo1.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://rpg/sprites/plates.png" type="Texture" id=5]
+
+[sub_resource type="CanvasItemMaterial" id=3]
+
+shader/shader = ExtResource( 2 )
+shader/shading_mode = 0
+shader_param/anim_color = Plane( 0.9, 0.5, 0.5, 1 )
+shader_param/anim_max_height = 2.0
+shader_param/anim_speed_multiplier = 4.0
+shader_param/opacity = 0.4
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 16
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 4 )
+
+[node name="icons" type="Node2D"]
+
+[node name="move_range" type="Node2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+visibility/opacity = 0.5
+transform/pos = Vector2( 40.5562, 54.5562 )
+transform/scale = Vector2( 0.73262, 0.73262 )
+z/z = 2
+
+[node name="icon_l" type="Sprite" parent="move_range"]
+
+transform/pos = Vector2( -18.069, 6.82483 )
+transform/scale = Vector2( 1.05202, 1 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 80, 0, 40, 40 )
+
+[node name="icon_r" type="Sprite" parent="move_range"]
+
+transform/pos = Vector2( 16.8474, 6.82483 )
+transform/scale = Vector2( 1.09164, 1 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 80, 0, 40, 40 )
+
+[node name="icon_u" type="Sprite" parent="move_range"]
+
+transform/pos = Vector2( 4.9671, 1.76459 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 40, 0, 40, 40 )
+
+[node name="icon_d" type="Sprite" parent="move_range"]
+
+transform/pos = Vector2( -5.95261, 12.6843 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 40, 0, 40, 40 )
+
+[node name="icon_start" type="Sprite" parent="move_range"]
+
+transform/pos = Vector2( -0.0407677, 6.12392 )
+transform/scale = Vector2( 1.09535, 0.97012 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 0, 40, 40 )
+
+[node name="attack_range" type="Node2D" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 44, 59.2657 )
+transform/scale = Vector2( 1, 0.897948 )
+z/z = 2
+
+[node name="icon" type="Sprite" parent="attack_range"]
+
+material/material = SubResource( 3 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 120, 0, 80, 40 )
+
+[node name="def_status" type="Node2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+visibility/opacity = 0.7
+transform/pos = Vector2( -2, -2 )
+transform/scale = Vector2( 0.7, 0.7 )
+z/z = 200
+
+[node name="b" type="Node2D" parent="def_status"]
+
+transform/pos = Vector2( 31.8572, -4.2857 )
+
+[node name="icon" type="Sprite" parent="def_status/b"]
+
+visibility/opacity = 0.7
+transform/pos = Vector2( 44, 59.2657 )
+transform/scale = Vector2( -1, 0.897948 )
+texture = ExtResource( 1 )
+modulate = Color( 0.977295, 1, 0.90625, 1 )
+region = true
+region_rect = Rect2( 280, 0, 40, 40 )
+
+[node name="arrow" type="Label" parent="def_status/b"]
+
+rect/rotation = -109.465
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 63.0
+margin/top = 30.0
+margin/right = 103.0
+margin/bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_constants/shadow_as_outline = 1
+text = ">"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="v" type="Label" parent="def_status/b"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 36.0
+margin/top = 46.0
+margin/right = 76.0
+margin/bottom = 64.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "25"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="l" type="Node2D" parent="def_status"]
+
+transform/pos = Vector2( -17.1429, 2.00001 )
+z/z = 4
+
+[node name="icon" type="Sprite" parent="def_status/l"]
+
+visibility/opacity = 0.7
+transform/pos = Vector2( 44, 59.2657 )
+transform/scale = Vector2( 1, 0.897948 )
+texture = ExtResource( 1 )
+modulate = Color( 0.977295, 1, 0.90625, 1 )
+region = true
+region_rect = Rect2( 200, 0, 40, 40 )
+
+[node name="arrow" type="Label" parent="def_status/l"]
+
+rect/rotation = 14.1751
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 3.0
+margin/top = 57.0
+margin/right = 43.0
+margin/bottom = 82.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_constants/shadow_as_outline = 1
+text = ">"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="v" type="Label" parent="def_status/l"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 27.0
+margin/top = 52.0
+margin/right = 67.0
+margin/bottom = 70.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "25"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="r" type="Node2D" parent="def_status"]
+
+transform/pos = Vector2( 52.1429, 2.85714 )
+z/z = 15
+
+[node name="icon" type="Sprite" parent="def_status/r"]
+
+visibility/opacity = 0.7
+transform/pos = Vector2( 44, 59.2657 )
+transform/scale = Vector2( -1, 0.897948 )
+texture = ExtResource( 1 )
+modulate = Color( 0.977295, 1, 0.90625, 1 )
+region = true
+region_rect = Rect2( 200, 0, 40, 40 )
+
+[node name="arrow" type="Label" parent="def_status/r"]
+
+rect/rotation = 181.949
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 85.0
+margin/top = 66.0
+margin/right = 125.0
+margin/bottom = 91.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_constants/shadow_as_outline = 1
+text = ">"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="v" type="Label" parent="def_status/r"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 45.0
+margin/top = 52.0
+margin/right = 85.0
+margin/bottom = 70.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "25"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="f" type="Node2D" parent="def_status"]
+
+transform/pos = Vector2( 8.85715, 21.8571 )
+z/z = 15
+
+[node name="icon" type="Sprite" parent="def_status/f"]
+
+visibility/opacity = 0.7
+transform/pos = Vector2( 44, 59.2657 )
+transform/scale = Vector2( -1, 0.897948 )
+texture = ExtResource( 1 )
+modulate = Color( 0.977295, 1, 0.90625, 1 )
+region = true
+region_rect = Rect2( 240, 0, 40, 40 )
+
+[node name="arrow" type="Label" parent="def_status/f"]
+
+rect/rotation = 69.7713
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 25.0
+margin/top = 88.0
+margin/right = 65.0
+margin/bottom = 113.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_constants/shadow_as_outline = 1
+text = ">"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="v" type="Label" parent="def_status/f"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 34.0
+margin/top = 52.0
+margin/right = 74.0
+margin/bottom = 70.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
+text = "25"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="plate_exemple" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 80, 80 )
+
+

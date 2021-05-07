@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://rpg/scripts/isometric_tile.gd" type="Script" id=1]
+[ext_resource path="res://shaders/white_sine_anim_SHADER.tres" type="Shader" id=2]
+[ext_resource path="res://rpg/sprites/non_walls.png" type="Texture" id=3]
+[ext_resource path="res://rpg/sprites/walls.png" type="Texture" id=4]
+[ext_resource path="res://rpg/tiles/tile_parallelogram_collider.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+shader/shader = ExtResource( 2 )
+shader/shading_mode = 0
+shader_param/anim_color = Plane( 0.9, 0.9, 0.9, 1 )
+shader_param/anim_max_height = 6.0
+shader_param/anim_speed_multiplier = 4.0
+shader_param/opacity = 1.0
+
+[node name="level_door" type="Node2D"]
+
+script/script = ExtResource( 1 )
+is_floor = false
+
+[node name="non_bg" type="Sprite" parent="."]
+
+visibility/visible = false
+material/material = SubResource( 1 )
+z/z = 16
+texture = ExtResource( 3 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 80, 80 )
+
+[node name="bg" type="Sprite" parent="."]
+
+texture = ExtResource( 4 )
+centered = false
+region = true
+region_rect = Rect2( 0, 160, 80, 80 )
+
+[node name="tile_parallelogram_collider" parent="." instance=ExtResource( 5 )]
+
+
